@@ -14,6 +14,7 @@ class App extends Component {
     this.state = { images: [] };
   }
 
+  // Normally we don't use ajax in a Meteor and react application, we do this here is just for demo.
   componentWillMount() {
     // Fantastic place to load data!
     axios.get('https://api.imgur.com/3/gallery/hot/viral/0')
