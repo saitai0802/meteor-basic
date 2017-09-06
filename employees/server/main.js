@@ -10,7 +10,7 @@ Meteor.startup(() => {
   // Check to see if data exists in the collection
   // See if the collection has any records
   const numberRecords = Employees.find({}).count();
-  console.log(numberRecords); // <== this console will be show in our terimal.
+  console.log("numberRecords: " + numberRecords ); // <== this console will be show in our terimal.
 
   if (!numberRecords) {
     // Generate some data...
