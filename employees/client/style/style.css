@@ -1,6 +1,9 @@
 .employee-list {
   display: flex;
   flex-wrap: wrap;
+
+  /*  each individual row of EmployeeDetail and evenly distribute*/
+  /* the amount of space in that row equally between each element*/
   justify-content: space-around;
 }
 
