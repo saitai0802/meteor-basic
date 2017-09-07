@@ -1,9 +1,13 @@
 import { Meteor } from 'meteor/meteor';
-import { Links } from '../imports/collections/links';
-import { WebApp } from 'meteor/webapp';
-import ConnectRoute from 'connect-route';
+import { Links } from '../imports/collections/links'; // A Meteor.methods which related to Links collection.
+import { WebApp } from 'meteor/webapp';  // WebApp is a server component of meteor, Metoer will use it to handle incoming requests
+import ConnectRoute from 'connect-route';  // connect-route is just like the same as Express's router
 
 Meteor.startup(() => {
+
+  // Remove to type in "meteor remove autopublish" in server console first!
+
+   // We will explain why we don't use arrow function as our callback function in Markbin project.
   Meteor.publish('links', function() {
     return Links.find({});
   });
@@ -29,8 +33,14 @@ function onRoute(req, res, next) {
   }
 }
 
+// ConnectRoute create a middleware
 const middleware = ConnectRoute(function(router) {
+
+  // If the incoming request matches the form of '/ anything' then execute onRoute();
   router.get('/:token', onRoute);
 });
 
-WebApp.connectHandlers.use(middleware);
+// We can add our custom Middleware to our wepApp object
+// WebApp.connectHandlers.use(req => console.log(req) );  //print out all the request information
+
+ WebApp.connectHandlers.use(middleware);

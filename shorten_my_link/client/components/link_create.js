@@ -10,6 +10,8 @@ class LinkCreate extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    // The error object is created by meteor method. If error is returned from Metoer.method()
+    // Then this callback will be called.ss
     Meteor.call('links.insert', this.refs.link.value, (error) => {
       if (error) {
         this.setState({ error: 'Enter a valid URL' });

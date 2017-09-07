@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Header from './components/header';
 import LinkCreate from './components/link_create';
-import { Links } from '../imports/collections/links';
+import { Links } from '../imports/collections/links';  // A Meteor.methods which related to Links collection.
 import LinkList from './components/link_list';
 
 const App = () => {
