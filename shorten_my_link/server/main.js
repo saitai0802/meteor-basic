@@ -16,13 +16,13 @@ Meteor.startup(() => {
 // Executed whenever a user visits with a route like
 // 'localhost:3000/abcd'
 function onRoute(req, res, next) {
-  // Take the token out of hte url and try to a find a
+  // Take the token out of the url and try to a find a
   // matching link in the Links collection
   const link = Links.findOne({ token: req.params.token });
 
   if (link) {
-    // If we find a link object, redirect the user to the
-    // long URL
+    // If we find a link object, redirect the user to the long URL
+    // Explaination of $inc https://docs.meteor.com/api/collections.html#modifiers
     Links.update(link, { $inc: { clicks: 1 }});
     res.writeHead(307, { 'Location': link.url });
     res.end();

@@ -6,13 +6,15 @@ class LinkList extends Component {
   renderRows() {
     return this.props.links.map(link => {
       const { url, clicks, token } = link;
-      const shortLink = `http://localhost:3000/${token}`; //ES6 template string format
+
+      // I created this server with 3001 port.
+      const shortLink = `http://localhost:3001/${token}`; //ES6 template string format
 
       return (
         <tr key={token}>
           <td>{url}</td>
           <td>
-            <a href={shortLink}>{shortLink}</a>
+            <a href={shortLink} target="_blank">{shortLink}</a>
           </td>
           <td>
             {clicks}
