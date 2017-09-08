@@ -6,6 +6,7 @@ class Header extends Component {
   onBinClick(event) {
     event.preventDefault();
 
+    // Meteor method defined at imports/collections/bins.js
     Meteor.call('bins.insert', (error, binId) => {
       browserHistory.push(`/bins/${binId}`);
     });

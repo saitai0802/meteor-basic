@@ -10,7 +10,7 @@ Meteor.methods({
     // can be communicated back to the client side.
     check(url, Match.Where(url => validUrl.isUri(url)));
 
-    // We're ready to save the url
+    // We're ready to save the url. toString(36): 36進
     const token = Math.random().toString(36).slice(-5);
 
     // This record  will be insert no matter what in client side.

@@ -1,12 +1,17 @@
 import { Mongo } from 'meteor/mongo';
 
+// Remember to import this collections in our both slient and server side!!
+// Which is client/main.js and server/main.js
 Meteor.methods({
-  'bins.insert': function() {
+
+  // bins.insert is just a normal javascript key.
+  'bins.insert': function() { // We don't use flat arrow function to may Meteor knows this.userId
     return Bins.insert({
       createdAt: new Date(),
       content: '',
-      sharedWith: [],
-      ownerId: this.userId
+      sharedWith: [], // Array of email address of user
+      // https://docs.meteor.com/api/methods.html#DDPCommon-MethodInvocation-userId
+      ownerId: this.userId // A loggined user's id. if user is not logged in, then valuable null will be return.
     });
   },
 

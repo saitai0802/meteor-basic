@@ -3,7 +3,7 @@ import { Bins } from '../imports/collections/bins';
 
 Meteor.startup(() => {
   Meteor.publish('bins', function() {
-    return Bins.find({ ownerId: this.userId });
+    return Bins.find({ ownerId: this.userId }); // if user is not logined, then it will fetch all the Bin brecords
   });
 
   Meteor.publish('sharedBins', function() {
