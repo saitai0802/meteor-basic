@@ -6,6 +6,8 @@ import BinsViewer from './bins_viewer';
 import BinsShare from './bins_share';
 
 class BinsMain extends Component {
+
+  // if (!this.props.bin) is to prevent undefined when bin haven't retrived yet.
   render() {
     if (!this.props.bin) { return <div>Loading...</div>; }
 
@@ -21,8 +23,11 @@ class BinsMain extends Component {
 
 export default createContainer((props) => {
   const { binId } = props.params;
-  Meteor.subscribe('bins');
-  Meteor.subscribe('sharedBins');
 
-  return { bin: Bins.findOne(binId) };
+  // The reason we subscribe bin again and list, because we needa make sure
+  // refresh this page AND direct access to this page is also kick off the subscription
+  Meteor.subscribe('bins');
+  Meteor.subscribe('sharedBins'); //get list of currrent user
+
+  return { bin: Bins.findOne(binId) };  // find this id
 }, BinsMain);

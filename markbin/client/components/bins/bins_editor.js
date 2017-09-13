@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import CodeMirror from 'react-codemirror';
-import 'codemirror/mode/markdown/markdown';
+
+// A markdown editor
+import 'codemirror/mode/markdown/markdown';  // import and execute all the code inside this file
 
 class BinsEditor extends Component {
-  onEditorChange(content) {
+  onEditorChange(content) {  // this is a markdown Component event
     Meteor.call('bins.update', this.props.bin, content);
   }
 

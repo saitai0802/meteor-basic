@@ -6,6 +6,8 @@ Meteor.methods({
 
   // bins.insert is just a normal javascript key.
   'bins.insert': function() { // We don't use flat arrow function to may Meteor knows this.userId
+
+    // Collection.insert() will return ID of the item we just created!
     return Bins.insert({
       createdAt: new Date(),
       content: '',
@@ -19,8 +21,10 @@ Meteor.methods({
     return Bins.remove(bin);
   },
 
+  // https://docs.meteor.com/api/collections.html#Mongo-Collection-update
+  // Modify one or more documents in the collection. Returns the number of matched documents.
   'bins.update': function(bin, content) {
-    return Bins.update(bin._id, { $set: { content } });
+    return Bins.update(bin._id, { $set: { content } }); // $set: mongo modifier
   },
 
   'bins.share': function(bin, email) {

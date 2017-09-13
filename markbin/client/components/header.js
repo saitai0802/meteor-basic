@@ -7,6 +7,7 @@ class Header extends Component {
     event.preventDefault();
 
     // Meteor method defined at imports/collections/bins.js
+    // When click create bin, first create bin > created > callback funtion [change URL]
     Meteor.call('bins.insert', (error, binId) => {
       browserHistory.push(`/bins/${binId}`);
     });
